@@ -13,13 +13,10 @@ def checkstart():
         sys.exit(1)
 
 checkstart() # Check the command line arguments were passed
-# Example usage: python scrape_n_spell.py http://docs.learnosity.com logfile.txt
+# Example usage: python 4-0-foffer.py http://docs.example.com logfile.txt
 
 siteMapFileName = sys.argv[1] # The sitemap filename that will be read to find URLs to check
 logFileName = sys.argv[2] # Command-line argument that specifies the log file filename
-
-# TO DO: Analyse that RAW HTML text and do some detections:
-# 1. Detect a login page (indicating the page's permissions are restricted),
 
 count = 0
 
