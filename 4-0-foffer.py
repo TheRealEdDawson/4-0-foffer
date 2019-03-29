@@ -13,7 +13,7 @@ def checkstart():
         sys.exit(1)
 
 checkstart() # Check the command line arguments were passed
-# Example usage: python 4-0-foffer.py http://docs.example.com logfile.txt
+# Example usage: python 4-0-foffer.py site-map-list-of-URLs.txt logfile.txt
 
 siteMapFileName = sys.argv[1] # The sitemap filename that will be read to find URLs to check
 logFileName = sys.argv[2] # Command-line argument that specifies the log file filename
@@ -46,14 +46,14 @@ for line in siteMap:
     session = requests.session() # Create a session. (not required?)
     try: # Gracefully capture failures and report what happened.
         accessAttempt = requests.request("GET", thisPage, timeout=60, allow_redirects=False)
-        print('Server responded:')
-        logFile.write("Server responded:")
-        print('HTTP status: ', accessAttempt.status_code)
-        logFile.write("HTTP status: ")
+        print('Server responded: ')
+        logFile.write("Server responded: ")
+        print(' HTTP status: ', accessAttempt.status_code)
+        logFile.write(" HTTP status: ")
         logFile.write(str(accessAttempt.status_code))
         if (accessAttempt.status_code==301):
-            print('Redirected to:', accessAttempt.headers['Location'])
-            logFile.write("Redirected to:")
+            print(' Redirected to: ', accessAttempt.headers['Location'])
+            logFile.write("Redirected to: ")
             logFile.write(accessAttempt.headers['Location'])
     except requests.exceptions.ConnectionError as e:
         print("Error accessing page, exception follows: \n\n", e) 
